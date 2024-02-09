@@ -13,3 +13,7 @@
 .oswald {
   font-family: "Oswald", sans-serif;
 }
+
+.neon:hover {
+  box-shadow: 0px 0px 20px 2px #f880d8;
+}
