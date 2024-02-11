@@ -10,7 +10,7 @@ import Home from "../components/Home/Home";
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<RootLayout />}>
-    <Route path="/home" element={<Home />} />
+    <Route path="/" element={<Home />} />
     <Route path="/auth" element={<Auth />} />
   </Route>
 );

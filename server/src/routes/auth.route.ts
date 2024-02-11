@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-// import bcrypt from "bcryptjs";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/user.model"; // Import your User model
 
@@ -25,11 +25,11 @@ router.post("/register", async (req: Request, res: Response) => {
     }
 
     // Hash password
-    // const salt = await bcrypt.genSalt(10);
-    // const hashedPassword = await bcrypt.hash(password, salt);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create new user
-    const user = new User({ name, email, password });
+    const user = new User({ name, email, password: hashedPassword });
     await user.save();
 
     // Generate JWT token

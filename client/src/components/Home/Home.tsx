@@ -1,11 +1,32 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TbFishHook } from "react-icons/tb";
 import Todos from "../Todos/Todos";
+import { Todo, useMyContext } from "../../providers/ContextProvider";
 
 const Home = () => {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [task, setTask] = useState<string>("");
   const [description, setDescription] = useState<string>("");
+  const { todos, setTodos } = useMyContext();
+  const addTodo = () => {
+    if (task === "" || description === "") return;
+    const newTodo: Todo = {
+      id: new Date().toISOString(),
+      title: task,
+      description: description,
+      completed: false,
+      createdAt: new Date(),
+    };
+    setTodos((prevTodos) => (prevTodos ? [...prevTodos, newTodo] : [newTodo])); // Correctly update todos
+    console.log(todos);
+    setTask("");
+    setDescription("");
+    modalRef.current?.close();
+  };
+  useEffect(() => {
+    console.log(todos);
+  }, [todos]);
+
   return (
     <div className="w-screen flex flex-col justify-center items-center p-4">
       <button
@@ -43,7 +64,7 @@ const Home = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
-            <button className="btn mx-2 text-lg">
+            <button className="btn mx-2 text-lg" onClick={addTodo}>
               Hook <TbFishHook className="text-2xl text-blueish" />
             </button>
           </div>

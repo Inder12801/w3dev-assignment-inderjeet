@@ -1,7 +1,8 @@
 import { createContext, useContext, useState } from "react";
+import { todoData } from "../data/todoData";
 
 export interface Todo {
-  id?: string;
+  id: string;
   title: string;
   description: string;
   completed: boolean;
@@ -21,19 +22,20 @@ interface MyContextType {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   todos: Todo[] | null;
-  setTodos: React.Dispatch<React.SetStateAction<Todo[] | null>>;
+  setTodos: React.Dispatch<React.SetStateAction<Todo[] | null>>; // Corrected type
 }
 
 const MyContext = createContext<MyContextType>({
   user: null,
   setUser: () => {},
-  todos: [],
-  setTodos: () => {},
+  todos: null, // Initialize as null
+  setTodos: () => {}, // Corrected function signature
 });
 
 const ContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [todos, setTodos] = useState<Todo[] | null>([]);
+  const [todos, setTodos] = useState<Todo[] | null>([...todoData]); // Initialize as null
+
   return (
     <MyContext.Provider value={{ user, setUser, todos, setTodos }}>
       {children}

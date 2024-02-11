@@ -13,7 +13,41 @@
 .prompt {
   font-family: "Prompt", sans-serif;
 }
+.neon {
+  transition: all 0.3s ease;
+}
 
 .neon:hover {
-  box-shadow: 0px 0px 20px 2px #f880d8;
+  box-shadow: 0px 1px 1px 1px #d63484;
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+@keyframes fish-swim {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+@keyframes fish-tail {
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+}
+
+.animate-fish-swim {
+  animation: fish-swim 2s ease-in-out infinite alternate;
+}
+
+.animate-fish-tail {
+  animation: fish-tail 1s ease-in-out infinite;
 }
