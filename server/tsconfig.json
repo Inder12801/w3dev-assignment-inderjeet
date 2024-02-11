@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
+    "module": "AMD",
     "outFile": "dist/index.js",
     "sourceMap": true,
     "strict": true,

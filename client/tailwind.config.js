@@ -15,10 +15,14 @@ export default {
         "blueish-lighter": "#75B1FF",
         "blueish-lightest": "#99D1FF",
       },
-      boxShadow: {
-        custom: {
-          neon: "0 0 10px 5px #48abe0,0 0 20px 7px #ebecca,0 0 25px 20px #8a2be2,0 0 30px 25px #ff1493",
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-10deg)" },
+          "50%": { transform: "rotate(10deg)" },
         },
+      },
+      animation: {
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
     },
   },

@@ -6,10 +6,11 @@ import {
 } from "react-router-dom";
 import RootLayout from "../Layout/RootLayout";
 import Auth from "../components/Auth/Auth";
+import Home from "../components/Home/Home";
 
 const routes = createRoutesFromElements(
   <Route path="/" element={<RootLayout />}>
-    <Route path="/home" element={<div>Home</div>} />
+    <Route path="/home" element={<Home />} />
     <Route path="/auth" element={<Auth />} />
   </Route>
 );
