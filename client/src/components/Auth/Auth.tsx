@@ -23,7 +23,6 @@ const Auth = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // check if deatils exist
 
     if (mode === "login") {
       // Login
